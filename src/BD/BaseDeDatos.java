@@ -1,6 +1,9 @@
 package BD;
 
+import Elementos.Partida;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 public class BaseDeDatos {
     private static final String URL = "jdbc:mysql://localhost:3306/space_game";
@@ -68,5 +71,30 @@ public class BaseDeDatos {
         } catch (SQLException e) {
             System.out.println("Error al guardar partida");
         }
+    }
+
+    public static ArrayList<Partida> cargarPartidas() {
+        ArrayList<Partida> partidas = new ArrayList<>();
+        String query = "select * from partida order by id_partida desc limit 10";
+        try {
+            Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int puntuacionJugador = rs.getInt("puntuacion_jugador");
+                int tiempoSobrevivido = rs.getInt("tiempo_sobrevivido");
+                String nave = rs.getString("id_nave");
+                String usuario = rs.getString("id_usuario");
+
+                Partida partida = new Partida(puntuacionJugador, tiempoSobrevivido, nave, usuario);
+                partidas.add(partida);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Error al encontrar jugadr existente");
+        }
+        return partidas;
     }
 }

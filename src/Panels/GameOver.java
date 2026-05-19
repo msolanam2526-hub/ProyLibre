@@ -1,6 +1,9 @@
 package Panels;
 import BD.BaseDeDatos;
+import Elementos.Partida;
+
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class GameOver extends JPanel {
     public GameOver(JFrame frame, String nombre, String skin, int puntos, double tiempo) {
