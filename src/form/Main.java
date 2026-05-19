@@ -23,7 +23,7 @@ public class Main {
     }
 
     public static void showMenu() {
-        frame.setContentPane(new MenuPanel(frame));
+        frame.setContentPane(new MenuPanel());
         frame.revalidate();
         frame.repaint();
     }

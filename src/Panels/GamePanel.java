@@ -122,10 +122,6 @@ public class GamePanel extends JPanel {
     private void dispararJugador() {
         double ahora = System.currentTimeMillis();
 
-        /*revisar: System.currentTimeMillis() es rarete, usa el timer de alguna forma para calcular el tiempo
-        entre disparo y disparo, por ejemplo guarda el tiempo del ultimo disparo y hasta que el tiempo
-        actual no sea ese tiempo + x no se pueda hace otro disparo*/
-
         // El jugador dispara solo cada 500ms
         if (ahora - ultimoDisparoJugador >= 500) {
             balas.add(new Bullet(jugadorX + jugadorAncho / 2 - 5, jugadorY, true));

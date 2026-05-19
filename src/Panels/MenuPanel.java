@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MenuPanel extends JPanel/**/ {
-    private JFrame frame;
     private JTextField campoNombre;
     private int skinIndex = 0;
 
@@ -27,8 +26,8 @@ public class MenuPanel extends JPanel/**/ {
     private JLabel nombreNave;
     private Image fondo;
 
-    public MenuPanel(JFrame frame) {
-        this.frame = frame; //guardas esa ventana en la variable global de la clase.
+    public MenuPanel() {
+        //guardas esa ventana en la variable global de la clase.
         setLayout(null); //quita posiciones automaticas y nos permite acomodar las cosas a nuestro gusto.
         setPreferredSize(new Dimension(800, 600));
         fondo = new ImageIcon("src/Img/fondoss/tierra.jpg").getImage();
@@ -113,7 +112,7 @@ public class MenuPanel extends JPanel/**/ {
         btnJugar.addActionListener(e -> {
             String nombre = campoNombre.getText().trim();
             if (nombre.isEmpty() || nombre.length() > 30) {
-                JOptionPane.showMessageDialog(frame, "¡Introduce tu nombre!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "¡Introduce tu nombre!", "Aviso", JOptionPane.WARNING_MESSAGE);
             } else {
                 Main.showGame(nombre, skinRutas[skinIndex]);
             }

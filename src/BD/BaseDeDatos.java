@@ -62,6 +62,7 @@ public class BaseDeDatos {
             ps.setInt(2, tiempo);
             ps.setString(3, nombreSkin);
             ps.setString(4, nombre);
+            //revisa si se ha guardado correctamente si se guarda correctamente devuelve un numero superior a 0
             int anadirFila = ps.executeUpdate();
             if (anadirFila > 0) {
                 System.out.println("Partida guardada correctamente");
@@ -75,7 +76,7 @@ public class BaseDeDatos {
 
     public static ArrayList<Partida> cargarPartidas() {
         ArrayList<Partida> partidas = new ArrayList<>();
-        String query = "select * from partida order by id_partida desc limit 10";
+        String query = "select * from partida order by puntuacion_jugador desc limit 10";
         try {
             Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             PreparedStatement ps = conn.prepareStatement(query);
