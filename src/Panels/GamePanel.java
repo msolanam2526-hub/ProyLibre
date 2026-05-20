@@ -11,7 +11,6 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class GamePanel extends JPanel {
-
     private JFrame frame;
     private String nombre;
     private String skinRuta;
@@ -21,16 +20,16 @@ public class GamePanel extends JPanel {
     private int jugadorY = 450;
     private final int jugadorAncho = 50;
     private final int jugadorAlto = 50;
-    private int velocidad = 5;
-    private Image jugadorImg;
-    private Image vidaImg;      // Icono pequeño para mostrar las vidas
+    private final int velocidad = 5;
+    private final Image jugadorImg;
+    private final Image vidaImg;      // Icono pequeño para mostrar las vidas
     private int vidas = 3;      // Vidas del jugador
 
     // Puntuación
     private int score = 0;
 
     // Fondo
-    private Image fondo;
+    private final Image fondo;
 
     // Enemigo
     private Enemy enemigo;
@@ -83,6 +82,7 @@ public class GamePanel extends JPanel {
                     case KeyEvent.VK_D -> derecha = true;
                 }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
                 switch (e.getKeyCode()) {
@@ -106,7 +106,6 @@ public class GamePanel extends JPanel {
         });
         gameLoop.start();
 
-        /*mirate esta linea*/
         SwingUtilities.invokeLater(() -> requestFocusInWindow());
     }
 

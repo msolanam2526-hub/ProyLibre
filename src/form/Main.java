@@ -14,8 +14,8 @@ public class Main {
         frame = new JFrame("Space Game");
         frame.setSize(800, 625);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
+        frame.setLocationRelativeTo(null); // aparece en el centro
+        frame.setResizable(false); //tamaño fijo
 
         showMenu();
 
@@ -23,9 +23,9 @@ public class Main {
     }
 
     public static void showMenu() {
-        frame.setContentPane(new MenuPanel());
-        frame.revalidate();
-        frame.repaint();
+        frame.setContentPane(new MenuPanel()); //conecta el frame con el panel
+        frame.revalidate(); //ajusta los valores
+        frame.repaint(); // actualiza la imagen
     }
 
     public static void showGame(String nombre, String skin) {

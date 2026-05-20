@@ -25,7 +25,7 @@ public class BaseDeDatos {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {existe = true;}
+            if (rs.next()) {existe = true;} // si devuelve un registro de la BD
             rs.close();
             ps.close();
             conn.close();
@@ -88,7 +88,7 @@ public class BaseDeDatos {
                 String usuario = rs.getString("id_usuario");
 
                 Partida partida = new Partida(puntuacionJugador, tiempoSobrevivido, nave, usuario);
-                partidas.add(partida);
+                partidas.add(partida); //guardamos las partidas en el array partida
             }
             rs.close();
             ps.close();
